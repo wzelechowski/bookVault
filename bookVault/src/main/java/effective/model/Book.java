@@ -3,7 +3,6 @@ package effective.model;
 import java.math.BigDecimal;
 import java.util.*;
 import java.util.function.Function;
-import java.util.regex.Pattern;
 
 public class Book implements Comparable<Book> {
     private static final Comparator<Book> FALLBACK_COMPARATOR = Comparator
@@ -62,6 +61,20 @@ public class Book implements Comparable<Book> {
             this.title = title;
             this.ISBN = ISBN;
             this.price = price;
+        }
+
+        public Builder toBuilder() {
+            Builder builder = new Builder(this.title, this.ISBN, this.price)
+                    .releaseYear(this.releaseYear)
+                    .publishing(this.publishing)
+                    .countOfPages(this.countOfPages)
+                    .language(this.language)
+                    .description(this.description);
+
+            builder.authors.addAll(this.authors);
+            this.categories.forEach(builder::addCategory);
+
+            return builder;
         }
 
         public Builder addCategory(Category category) {
