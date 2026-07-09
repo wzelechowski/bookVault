@@ -32,14 +32,6 @@ public class Book implements Comparable<Book> {
     public enum Category { EDUCATIONAL, POP_SCIENCE, THRILLER }
     private final Set<Category> categories;
     private final String description;
-    private final List<Rental> rentedBooks = new ArrayList<>();
-    private final static Pattern ISBN_REGEX = Pattern.compile(
-            """
-                    ^(?:ISBN(?:-1[03])?:? )?(?=[0-9X]{10}$|(?=(?:[0-9]+[- ]){3})
-                    [- 0-9X]{13}$|97[89][0-9]{10}$|(?=(?:[0-9]+[- ]){4})[- 0-9]{17}$)
-                    (?:97[89][- ]?)?[0-9]{1,5}[- ]?[0-9]+[- ]?[0-9]+[- ]?[0-9X]$
-                    """
-    );
 
     private Book(Builder builder) {
         this.title = builder.title;
