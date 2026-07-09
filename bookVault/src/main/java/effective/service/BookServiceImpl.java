@@ -2,7 +2,6 @@ package effective.service;
 
 import effective.model.Book;
 import effective.repository.BookRepository;
-import effective.repository.BookRepositoryImpl;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -11,19 +10,10 @@ import java.util.stream.Collectors;
 
 public class BookServiceImpl implements BookService {
 
-    public static final BookServiceImpl INSTANCE = new BookServiceImpl(BookRepositoryImpl.getInstance());
     private final BookRepository bookRepository;
 
-    private BookServiceImpl(BookRepository bookRepository) {
-        if (INSTANCE != null) {
-            throw new IllegalStateException("You cannot create another instance of this class");
-        }
-
+    public BookServiceImpl(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
-    }
-
-    public static BookServiceImpl getInstance() {
-            return INSTANCE;
     }
 
     public List<Book> getAll() {

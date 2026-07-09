@@ -2,25 +2,15 @@ package effective.service;
 
 import effective.model.Author;
 import effective.repository.AuthorRepository;
-import effective.repository.AuthorRepositoryImpl;
 
 import java.util.List;
 
 public class AuthorServiceImpl implements AuthorService {
 
-    private static final AuthorService INSTANCE = new AuthorServiceImpl(AuthorRepositoryImpl.getInstance());
     private final AuthorRepository authorRepository;
 
-    private AuthorServiceImpl(AuthorRepository authorRepository) {
-        if (INSTANCE != null) {
-            throw new IllegalStateException("You cannot create another instance of this class");
-        }
-
+    public AuthorServiceImpl(AuthorRepository authorRepository) {
         this.authorRepository = authorRepository;
-    }
-
-    public static AuthorService getInstance() {
-        return INSTANCE;
     }
 
     @Override

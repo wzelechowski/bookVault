@@ -5,7 +5,7 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.regex.Pattern;
 
-public class Book {
+public class Book implements Comparable<Book> {
     private static final Comparator<Book> FALLBACK_COMPARATOR = Comparator
             .comparing(Book::getISBN);
 
@@ -188,5 +188,10 @@ public class Book {
                 categories,
                 description
         );
+    }
+
+    @Override
+    public int compareTo(Book o) {
+        return BY_TITLE.compare(this, o);
     }
 }

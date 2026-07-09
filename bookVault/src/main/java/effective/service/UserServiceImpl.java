@@ -1,26 +1,16 @@
 package effective.service;
 
-import effective.model.Book;
 import effective.model.User;
 import effective.repository.UserRepository;
-import effective.repository.UserRepositoryImpl;
 
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
 
-    private static final UserService INSTANCE = new UserServiceImpl(UserRepositoryImpl.getInstance());
     private final UserRepository userRepository;
 
-    private UserServiceImpl(UserRepository userRepository) {
-        if (INSTANCE != null) {
-            throw new IllegalStateException("You cannot create another instance of this class");
-        }
+    public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
-    }
-
-    public static UserService getInstance() {
-        return INSTANCE;
     }
 
     @Override

@@ -36,12 +36,12 @@ public class Author {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Author author)) return false;
-        return authorId == author.authorId && Objects.equals(books, author.books);
+        return authorId == author.authorId;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(authorId, books);
+        return Objects.hash(authorId);
     }
 
     @Override

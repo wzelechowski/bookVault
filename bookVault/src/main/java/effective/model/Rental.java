@@ -30,14 +30,12 @@ public class Rental {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Rental rental)) return false;
-        return Objects.equals(user, rental.user) && Objects.equals(book, rental.book);
+        return Objects.equals(user, rental.user) && Objects.equals(book, rental.book) && Objects.equals(rentedAt, rental.rentedAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(user, book);
-
-
+        return Objects.hash(user, book, rentedAt);
     }
 
     @Override
